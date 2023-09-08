@@ -10,6 +10,13 @@ public class BonusScore implements GameScore{
      * @throws 
      */
     public int calculateScore(int correctCount, int incorrectCount){
-        return 0;
+        
+        if((correctCount * 10) < (incorrectCount * 5)){
+            return 0;
+        }
+        else{
+            return (correctCount * 10) - (incorrectCount * 5);
+        }
+        
     }
 }

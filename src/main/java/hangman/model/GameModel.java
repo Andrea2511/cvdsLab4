@@ -31,7 +31,7 @@ public class GameModel {
     private Scanner scan;
     private String randomWord;
     private char[] randomWordCharArray;
-    
+    private GameScore score = new BonusScore();
     
    
     public GameModel(HangmanDictionary dictionary){
@@ -41,7 +41,7 @@ public class GameModel {
         randomWordCharArray = randomWord.toCharArray();
         incorrectCount = 0;
         correctCount = 0;
-        gameScore = 100;
+        gameScore = score.calculateScore(correctCount, incorrectCount);
         
     }
     
@@ -52,7 +52,7 @@ public class GameModel {
         randomWordCharArray = randomWord.toCharArray();
         incorrectCount = 0;
         correctCount = 0;
-        gameScore = 100;
+        gameScore = score.calculateScore(correctCount, incorrectCount);
     }
 
     //setDateTime
@@ -74,7 +74,7 @@ public class GameModel {
         }
         if(positions.size() == 0){
             incorrectCount++;
-            gameScore -= 10;
+            gameScore = score.calculateScore(correctCount, incorrectCount);
         } else {
             correctCount += positions.size();
         }
