@@ -7,7 +7,6 @@ public class BonusScore implements GameScore{
      * @pos se acaba cuando el puntaje llega a 0
      * @param correctCount = Puntaje cuando se acierta una letra (+ 10 puntos)
      * @param incorrectCount = Puntaje cuando no se acierta una letra  (- 5 puntos)
-     * @throws 
      */
     public int calculateScore(int correctCount, int incorrectCount){
 
