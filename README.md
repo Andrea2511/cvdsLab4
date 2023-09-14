@@ -1,4 +1,9 @@
-### Escuela Colombiana de Ingeniería
+## LABORATORIO 4 - HANGMAN
+
+### INTEGRANTES
+- Andrea Valentina Torres Tobar
+- Carolina Medina Acero 
+
 
 ### Procesos de Desarrollo de Software
 
@@ -94,6 +99,26 @@ principio de inversión de dependencias:
 ```bash	
 	git push <URL Repositorio>	
 ```
+#### Implementación De Game Score y Especificación De Metodos 
+- interface 
+
+   ![image](Resoursers/GameScoreInterface.png)
+- Bonus Score
+
+   ![image](Resoursers/BonusScore.png)
+
+- Original Score
+
+   ![image](Resoursers/OriginalScore.png)
+
+- Power Score
+
+   ![image](Resoursers/PowerScore.png)
+
+#### Implementación De Pruebas y Modelo 
+
+   ![image](Resoursers/test.png)
+
 
 
 ### Parte II
@@ -108,11 +133,19 @@ En este taller se va a utilizar un contenedor liviano ([GoogleGuice](https://git
 1. Utilizando el HangmanFactoryMethod (MétodoFabrica) incluya el
    OriginalScore a la configuración.
 
+      ![image](Resoursers/HagmanFactoryMethod.png)
+   
+
 Incorpore el Contenedor Liviano Guice dentro del proyecto:
 
 * Revise las dependencias necesarias en el pom.xml.
+
+   ![image](Resoursers/Dependencias.png)
+
+
 * Modifique la inyección de dependencias utilizando guice en lugar del
   método fábrica..
+
 * Configure la aplicación de manera que desde el programa SwingProject
   NO SE CONSTRUYA el Score directamente, sino a través de Guice, asi
   mismo como las otras dependencias que se están inyectando mediante
@@ -125,5 +158,11 @@ Incorpore el Contenedor Liviano Guice dentro del proyecto:
 	* Utilizar el idioma francés.
     * Utilizar el diccionario francés.
 	* etc...
+
+         ![image](Resoursers/HangmanDefaultFactoryMethod.png)
+         ![image](Resoursers/injector.png)
+         ![image](Resoursers/gui.png)
+
+   
 * Para lo anterior, [puede basarse en el ejemplo dado como
   referencia](https://github.com/PDSW-ECI/LightweighContainers_DepenendecyInjectionIntro-WordProcessor).
