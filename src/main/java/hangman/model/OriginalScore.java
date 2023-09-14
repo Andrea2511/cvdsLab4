@@ -7,15 +7,16 @@ public class OriginalScore implements GameScore{
      * @pos se acaba cuando el puntaje llega a 0
      * @param correctCount = Puntaje cuando se acierta una letra
      * @param incorrectCount = Puntaje cuando no se acierta una letra
-     * @throws
+     * @throws "NEGATIVE_PARAMETERS" = Los parametros son negativos
      */
-    public int calculateScore(int correctCount, int incorrectCount){
+    public int calculateScore(int correctCount, int incorrectCount) throws GameScoreException{
 
         if(correctCount >= 0 && incorrectCount >= 0) {
             return 100 - (10 * incorrectCount);
         }
         else {
-            return 0;
+            throw new GameScoreException(GameScoreException.NEGATIVE_PARAMETERS);
         }
+
     }
 }

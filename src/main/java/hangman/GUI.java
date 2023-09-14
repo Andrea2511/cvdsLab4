@@ -30,9 +30,10 @@ public class GUI {
     public static final String GAME_KEY = "gamescreen";
     public static final String GAME_OVER_KEY = "gameoverscreen";
 
-    private Language language;
-    private HangmanDictionary dictionary;
-    private HangmanPanel hangmanPanel;
+    private final GameScore score;
+    private final Language language;
+    private final HangmanDictionary dictionary;
+    private final HangmanPanel hangmanPanel;
 
     private MainFrameController mainFrameController;
 
@@ -45,6 +46,7 @@ public class GUI {
 
     // Use Factory method
     public GUI(HangmanFactoryMethod factoryMethod) {
+        this.score = factoryMethod.createScore();
         this.language = factoryMethod.createLanguage();
         this.dictionary = factoryMethod.createDictionary();
         this.hangmanPanel = factoryMethod.createHangmanPanel();
@@ -52,7 +54,8 @@ public class GUI {
 
     @Inject
     // Use Guice constructor
-    public GUI(Language language, HangmanDictionary dictionary, HangmanPanel hangmanPanel){
+    public GUI(Language language, HangmanDictionary dictionary, HangmanPanel hangmanPanel, GameScore score){
+        this.score = score;
         this.language = language;
         this.dictionary= dictionary;
         this.hangmanPanel = hangmanPanel;
@@ -61,7 +64,7 @@ public class GUI {
     //method: setup
     //purpose: Create the various panels (game screens) for our game
     // and attach them to the main frame.
-    private void setup(){
+    private void setup() throws GameScoreException {
         mainFrameController = new MainFrameController(
                 new MainFrameModel(PROJECT_NAME,600,400,null,EXIT_ON_CLOSE),
                 new MainFrame()
@@ -117,9 +120,13 @@ public class GUI {
     //method: setupAndStart
     //purpose: call setup method, switch to first application screen (splash)
     //then set the whole thing visible
-    private void setupAndStart(){
+    private void setupAndStart() {
         javax.swing.SwingUtilities.invokeLater(() -> {
-            setup();
+            try {
+                setup();
+            } catch (GameScoreException e) {
+                throw new RuntimeException(e);
+            }
             mainFrameController.changeVisibleCard(SPLASH_KEY);
             mainFrameController.getFrame().setVisible(true);
         });
