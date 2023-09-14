@@ -160,8 +160,10 @@ Incorpore el Contenedor Liviano Guice dentro del proyecto:
 	* etc...
 
          ![image](Resoursers/HangmanDefaultFactoryMethod.png)
+         ![image](Resoursers/HagmanFactoryServices.png)
          ![image](Resoursers/injector.png)
          ![image](Resoursers/gui.png)
+         
 
    
 * Para lo anterior, [puede basarse en el ejemplo dado como
