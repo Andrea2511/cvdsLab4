@@ -24,8 +24,10 @@ public class PowerScore implements GameScore{
 
             }
         }
-        else{
-
+        else if(correctCount == 0 && incorrectCount >= 0) {
+            result = 0;
+        }
+        else {
             throw new GameScoreException(GameScoreException.NEGATIVE_PARAMETERS);
         }
 
